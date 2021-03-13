@@ -14,7 +14,7 @@ data_dir = os.path.join(main_dir, 'data')
 def load_image(name, colorkey=None):
     fullname = os.path.join(data_dir, name)
     try:
-        image = pygame.image.load('assets/chimp.bmp')
+        image = pygame.image.load(name)
     except pygame.error:
         print('Cannot load image:', fullname)
         raise SystemExit(str(geterror()))
@@ -47,7 +47,7 @@ class Fist(pygame.sprite.Sprite):
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)  # call Sprite initializer
-        self.image, self.rect = load_image('fist.bmp', -1)
+        self.image, self.rect = load_image('assets/fist.bmp', -1)
         self.punching = 0
 
     def update(self):
@@ -76,7 +76,7 @@ class Chimp(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)  # call Sprite intializer
 
-        self.image, self.rect = load_image('/assets/chimp.bmp', -1)
+        self.image, self.rect = load_image('assets/chimp.bmp', -1)
         screen = pygame.display.get_surface()
         self.area = screen.get_rect()
         self.rect.topleft = 10, 10
@@ -147,7 +147,7 @@ def main():
 
     # Prepare Game Objects
     clock = pygame.time.Clock()
-    # whiff_sound = load_sound('whiff.wav')
+    # whiff_sound = load_sound('assets/whiff.wav')
     # punch_sound = load_sound('punch.wav')
     chimp = Chimp()
     fist = Fist()
